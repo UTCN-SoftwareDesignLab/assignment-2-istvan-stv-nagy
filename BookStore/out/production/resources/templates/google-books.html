@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Google Books</title>
+    <style>
+        td {
+            width: 200px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Price</th>
+    </tr>
+
+    <th:block th:each="book : ${bookList}">
+        <tr>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author.name}"></td>
+            <td th:text="${book.genre.name}"></td>
+            <td th:text="${book.price}"></td>
+        </tr>
+    </th:block>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<hr />
+<a href="/admin">Back to admin page</a>
+
+</html>

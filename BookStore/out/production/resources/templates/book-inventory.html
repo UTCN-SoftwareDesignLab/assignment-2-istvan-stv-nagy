@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Inventory</title>
+    <style>
+        td {
+            width: 200px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    <th:block th:each="book : ${bookList}">
+        <tr>
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author.name}"></td>
+            <td th:text="${book.genre.name}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.quantity}"></td>
+            <td>
+                <a th:href ="@{'/book/update/' + ${book.id}}">Update</a>
+            </td>
+            <td>
+                <a th:href ="@{'/book/delete/' + ${book.id}}">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<hr />
+<a href="/admin">Back to admin page</a>
+
+</html>

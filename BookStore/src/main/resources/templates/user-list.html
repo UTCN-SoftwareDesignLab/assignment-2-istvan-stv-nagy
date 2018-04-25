@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <style>
+        td {
+            width: 200px;
+        }
+        th {
+            text-align: left;
+        }
+        table, th, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+    <th:block th:each="user : ${userList}">
+        <tr>
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.role}"></td>
+            <td>
+                <a th:href ="@{'/user/update/' + ${user.id}}">Update</a>
+            </td>
+            <td>
+                <a th:href = "@{'/user/delete/' + ${user.id}}">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<hr />
+<a href="/admin">Back to admin page</a>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sell book</title>
+</head>
+<body>
+<form th:action="@{'/book/sell/' +${id}}" th:object="${id}" method="post">
+    Amount: <input type="text" name="bookAmount"/>
+    <br />
+    <button>Sell</button>
+</form>
+
+<div th:if="${param.success}">
+    User created successfully!
+</div>
+</body>
+</html>

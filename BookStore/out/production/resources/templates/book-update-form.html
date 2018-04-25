@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Update Book</title>
+</head>
+<body>
+<form th:action="@{'/book/update/' +${book.id}}" th:object="${book}" method="post">
+    Title: <input type="text" value="${book.title}" name="title" th:field="${book.title}"/>
+    <br />
+    Author Name: <input type="text" value="${book.authorName}" name="author" th:field="${book.authorName}"/>
+    <br />
+    Genre:
+    <select name="genre" id="genre" value="${book.genreId}" th:field="${book.genreId}">
+        <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
+    </select>
+    <br />
+    Price: <input type="text" value="${book.price}" name="price" th:field="${book.price}"/>
+    <br />
+    Quantity: <input type="text" value="${book.quantity}" name="quantity" th:field="${book.quantity}"/>
+    <br />
+    <button>Update</button>
+</form>
+
+<div th:if="${param.success}">
+    Book created successfully!
+</div>
+</body>
+</html>

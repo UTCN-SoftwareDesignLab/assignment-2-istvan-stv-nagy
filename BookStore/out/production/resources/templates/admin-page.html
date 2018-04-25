@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<a th:href="@{/logout}">Logout</a>
+
+<h1>Administrator</h1>
+
+Book operations
+<br />
+<a href="/book/findall">Find all books</a> |
+<a href="/book/create">Create Book</a>
+<hr />
+
+User operations
+<br />
+<a href="/user/findall">Find all users</a> |
+<a href="/user/create">Create User</a>
+<hr />
+
+Report generation
+<br />
+<a href="/report_pdf">Generate pdf report</a> |
+<a href="/report_csv">Generate csv report</a>
+<hr />
+
+Google Books API
+<br />
+<a href="google-books">Search - Google Books</a>
+<hr />
+
+
+</body>
+</html>

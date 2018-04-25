@@ -1,0 +1,52 @@
+group 'cc.catalysts.book-store'
+description 'book-store'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.2.RELEASE'
+        junitVersion = '4.12'
+        mySqlConnectorVersion = '5.1.36'
+    }
+
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:' + springBootVersion
+    }
+}
+
+jar {
+    baseName = 'book-store'
+    version =  '1.0.0'
+}
+
+repositories {
+    mavenLocal()
+    maven { url "https://repo.spring.io/libs-release" }
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf:' + springBootVersion
+    compile 'org.springframework.boot:spring-boot-starter-security:' + springBootVersion
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:' + springBootVersion
+    compile 'org.apache.pdfbox:pdfbox:2.0.9'
+    runtime 'mysql:mysql-connector-java:' + mySqlConnectorVersion
+    testCompile 'junit:junit:' + junitVersion
+    testCompile group: 'org.springframework', name: 'spring-test', version: '2.5'
+    compile "org.mockito:mockito-core:1.+"
+    compile 'com.google.apis:google-api-services-books:v1-rev95-1.23.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.6'
+}
