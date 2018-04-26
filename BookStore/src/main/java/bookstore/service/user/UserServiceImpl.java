@@ -1,11 +1,10 @@
-package bookstore.service;
+package bookstore.service.user;
 
 import bookstore.dto.UserDto;
 import bookstore.entity.User;
 import bookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

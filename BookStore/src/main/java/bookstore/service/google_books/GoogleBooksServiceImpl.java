@@ -9,25 +9,30 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.books.Books;
 import com.google.api.services.books.model.Volume;
 import com.google.api.services.books.model.Volumes;
+import org.springframework.stereotype.Service;
 
-import java.net.URLEncoder;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoogleBookQueryExecutor {
+@Service
+public class GoogleBooksServiceImpl implements GoogleBooksService {
 
-    private static final String APPLICATION_NAME = "";
-    private static final NumberFormat CURRENCY_FORMATTER = NumberFormat.getCurrencyInstance();
-    private static final NumberFormat PERCENT_FORMATTER = NumberFormat.getPercentInstance();
+    public List<Book> findByTitle(String title) {
+        try {
+            return queryGoogleBooks("intitle:" + title);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-   public List<Book> queryGoogleBooks(String query) throws Exception {
+    private List<Book> queryGoogleBooks(String query) throws Exception {
         List<Book> bookList = new ArrayList<>();
 
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
 
         final Books books = new Books.Builder(GoogleNetHttpTransport.newTrustedTransport(), jsonFactory, null)
-                .setApplicationName(APPLICATION_NAME)
+                .setApplicationName("")
                 .build();
         Books.Volumes.List volumesList = books.volumes().list(query);
         volumesList.setFilter("ebooks");

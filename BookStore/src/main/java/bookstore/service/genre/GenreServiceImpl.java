@@ -1,4 +1,4 @@
-package bookstore.service;
+package bookstore.service.genre;
 
 import bookstore.entity.Genre;
 import bookstore.repository.GenreRepository;

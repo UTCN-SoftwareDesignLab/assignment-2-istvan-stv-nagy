@@ -8,13 +8,13 @@
 </head>
 <body>
 <form th:action="@{'/book/sell/' +${id}}" th:object="${id}" method="post">
-    Amount: <input type="text" name="bookAmount"/>
+    Amount: <input type="number" name="bookAmount"/>
     <br />
     <button>Sell</button>
 </form>
 
-<div th:if="${param.success}">
-    User created successfully!
+<div th:if="${param.invalid}">
+    Invalid amount!
 </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package bookstore.service;
+package bookstore.service.user;
 
 import bookstore.dto.UserDto;
 import bookstore.entity.User;

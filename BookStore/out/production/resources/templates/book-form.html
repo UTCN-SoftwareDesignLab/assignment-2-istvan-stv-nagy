@@ -18,9 +18,9 @@
         <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
     </select>
     <br />
-    Price: <input type="text" name="price" th:field="${book.price}"/>
+    Price: <input type="number" name="price" step="0.01" th:field="${book.price}"/>
     <br />
-    Quantity: <input type="text" name="quantity" th:field="${book.quantity}"/>
+    Quantity: <input type="number" name="quantity" th:field="${book.quantity}"/>
     <br />
     <button>Create</button>
 </form>

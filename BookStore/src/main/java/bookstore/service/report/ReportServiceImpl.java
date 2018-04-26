@@ -1,8 +1,7 @@
-package bookstore.service;
+package bookstore.service.report;
 
 import bookstore.entity.Book;
 import bookstore.repository.BookRepository;
-import bookstore.service.report.ReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

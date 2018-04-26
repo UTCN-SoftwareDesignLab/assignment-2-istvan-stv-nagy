@@ -1,7 +1,7 @@
-package bookstore.controller;
+package bookstore.controller.security;
 
 import bookstore.entity.User;
-import bookstore.service.UserService;
+import bookstore.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;

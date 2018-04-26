@@ -1,4 +1,4 @@
-package bookstore.service;
+package bookstore.service.book;
 
 import bookstore.dto.BookDto;
 import bookstore.entity.Author;
@@ -28,5 +28,5 @@ public interface BookService {
 
     void delete(Integer id);
 
-    void sale(Integer bookId, int quantity);
+    boolean sale(Integer bookId, int quantity);
 }

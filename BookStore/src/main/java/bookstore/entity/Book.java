@@ -12,10 +12,10 @@ public class Book {
 
     private String title;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private Author author;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private Genre genre;
 
     private double price;

@@ -1,4 +1,4 @@
-package bookstore.service;
+package bookstore.service.report;
 
 public interface ReportService {
 

@@ -3,6 +3,7 @@ package bookstore.dto;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class BookDto {
@@ -12,6 +13,7 @@ public class BookDto {
     public String title;
 
     @Size(min = 1, message = "Author cannot be empty")
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Author name can contain only letters")
     public String authorName;
 
     @Range(min = 1)

@@ -1,9 +1,10 @@
-package bookstore.service;
+package bookstore.service.book;
 
 import bookstore.dto.BookDto;
 import bookstore.entity.Author;
 import bookstore.entity.Book;
 import bookstore.entity.Genre;
+import bookstore.entity.builder.BookBuilder;
 import bookstore.repository.AuthorRepository;
 import bookstore.repository.BookRepository;
 import bookstore.repository.GenreRepository;
@@ -64,21 +65,30 @@ public class BookServiceImpl implements BookService{
         if (author == null)
             author = authorRepository.save(new Author(bookDto.authorName));
         Genre genre = genreRepository.findOne(bookDto.genreId);
-        Book book = new Book(bookDto.title, author, genre, bookDto.price, bookDto.quantity);
+        Book book = new BookBuilder()
+                .setTitle(bookDto.title)
+                .setAuthor(author)
+                .setGenre(genre)
+                .setPrice(bookDto.price)
+                .setQuantity(bookDto.quantity)
+                .build();
         return bookRepository.save(book);
     }
 
     @Override
     public Book update(Integer id, BookDto bookDto) {
-        Book book = bookRepository.findOne(id);
         Author author = authorRepository.findByName(bookDto.authorName);
         if (author == null)
             author = authorRepository.save(new Author(bookDto.authorName));
-        book.setAuthor(author);
-        book.setGenre(genreRepository.findOne(bookDto.genreId));
-        book.setTitle(bookDto.title);
-        book.setPrice(bookDto.price);
-        book.setQuantity(bookDto.quantity);
+        Genre genre = genreRepository.findOne(bookDto.genreId);
+        Book book = new BookBuilder()
+                .setTitle(bookDto.title)
+                .setAuthor(author)
+                .setGenre(genre)
+                .setPrice(bookDto.price)
+                .setQuantity(bookDto.quantity)
+                .setId(id)
+                .build();
         return bookRepository.save(book);
     }
 
@@ -93,11 +103,13 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public void sale(Integer bookId, int quantity) {
+    public boolean sale(Integer bookId, int quantity) {
         Book book = bookRepository.findOne(bookId);
         if (book.getQuantity() >= quantity) {
             book.setQuantity(book.getQuantity() - quantity);
+            bookRepository.save(book);
+            return true;
         }
-        bookRepository.save(book);
+        return false;
     }
 }

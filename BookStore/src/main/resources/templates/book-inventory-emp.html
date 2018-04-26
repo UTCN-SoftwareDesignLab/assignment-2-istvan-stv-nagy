@@ -40,7 +40,10 @@
             <td th:text="${book.price}"></td>
             <td th:text="${book.quantity}"></td>
             <td>
-                <a th:href ="@{'/book/sell/' + ${book.id}}">Sell</a>
+                <form th:action="@{'/book/sell/' + ${book.id}}" method="post">
+                    <input type="number" name="bookAmount" min="1" max="${book.quantity}"/>
+                    <button>Sell</button>
+                </form>
             </td>
         </tr>
     </th:block>

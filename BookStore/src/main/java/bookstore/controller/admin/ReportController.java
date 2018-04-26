@@ -1,6 +1,6 @@
-package bookstore.controller;
+package bookstore.controller.admin;
 
-import bookstore.service.ReportService;
+import bookstore.service.report.ReportService;
 import bookstore.service.report.PDFLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

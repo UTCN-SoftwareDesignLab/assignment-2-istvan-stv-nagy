@@ -1,28 +1,29 @@
-package bookstore.controller;
+package bookstore.controller.admin;
 
+import bookstore.controller.ErrorExtractor;
 import bookstore.dto.UserDto;
 import bookstore.entity.User;
-import bookstore.service.UserService;
+import bookstore.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class AdminCRUDUsersController {
 
     private UserService userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public AdminCRUDUsersController(UserService userService) {
         this.userService = userService;
     }
 
@@ -79,4 +80,5 @@ public class UserController {
             return "user-update-form";
         }
     }
+
 }
